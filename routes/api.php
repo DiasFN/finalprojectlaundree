@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
@@ -20,6 +20,9 @@ use App\Http\Controllers\UserCT;
 Route::post('/register', [UserCT::class, 'store']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/order', [OrderController::class, 'store']);
+Route::get('/user', [UserCT::class, 'showAll']);
+Route::get('/user/{id}', [UserCT::class, 'show']);
+
 
 Route::get('/test', function() {
     return 'Route is working!';

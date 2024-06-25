@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('laundry', function (Blueprint $table) {
             $table->id('idLaundry');
             $table->unsignedBigInteger('name_id')->nullable(); // Make this nullable
-            $table->foreign('name_id')->references('idUser')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('name_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name_customer');
-            $table->string('no_hp')->unique();
+            $table->string('no_hp');
             $table->string('alamat');
             $table->string('jenisLayanan');
             $table->integer('berat');

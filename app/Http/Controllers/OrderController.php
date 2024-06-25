@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Order;
+use App\Models\User;
 
 class OrderController extends Controller
 {
@@ -12,7 +13,7 @@ class OrderController extends Controller
     {
         // Validasi data yang diterima
         $validator = Validator::make($request->all(), [
-            'name_id' => 'required|exists:users,idUser', // Add this line
+            'name_id' => 'required|exists:users,id', // Add this line
             'name_customer' => 'required|string|max:255',
             'no_hp' => 'required|string|unique:laundry|max:25',
             'alamat' => 'required|string|max:255',
