@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Order;
-use App\Models\User;
 
 class OrderController extends Controller
 {
@@ -54,6 +53,30 @@ class OrderController extends Controller
                 'message' => 'Terjadi kesalahan saat membuat order',
                 'error' => $e->getMessage()
             ], 500);
+        }
+    }
+
+    public function showAll(){
+        $user = Order::all();
+
+        return response()->json([
+            'msg' => 'Data Order Keseluruhan',
+            'data'=> $user
+        ],200);
+    }
+
+    public function show($id){
+        $user = Order::find($id);
+    
+        if ($user) {
+            return response()->json([
+                'msg' => 'Data User dengan ID ' . $id,
+                'data' => $user
+            ], 200);
+        } else {
+            return response()->json([
+                'msg' => 'User dengan ID ' . $id . ' tidak ditemukan',
+            ], 404);
         }
     }
 }
